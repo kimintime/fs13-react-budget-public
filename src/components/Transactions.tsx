@@ -12,6 +12,7 @@ const Transactions = ({ setTransactions, transactions, }:
     const [date, setDate] = useState('')
     const [type, setType] = useState('')
 
+
     const handleSubmit = (event: any) => {
         event.preventDefault()
 
@@ -20,6 +21,7 @@ const Transactions = ({ setTransactions, transactions, }:
                 ...transactions,
                 description: inputText,
                 date: date,
+                amount: data,
                 deposit: transactions.deposit + data,
                 id: Math.random().toString(36).slice(2, 7)
             })
@@ -30,10 +32,16 @@ const Transactions = ({ setTransactions, transactions, }:
                 ...transactions,
                 description: inputText,
                 date: date,
+                amount: data,
                 expense: transactions.expense + data,
                 id: Math.random().toString(36).slice(2, 7)
             })
         }
+
+        setDate('')
+        setInputText('')
+        setType('')
+        setData(0)
     }
 
     return (
@@ -82,7 +90,12 @@ const Transactions = ({ setTransactions, transactions, }:
                     <MenuItem value="expense">Expense</MenuItem>
                 </Select>
             </FormControl>
-            <Box style={{ display: "flex", flexDirection: "column", alignItems: "center" }} >
+            <Box style={{ 
+                display: "flex", 
+                flexDirection: "column", 
+                alignItems: "center"
+                }}
+            >
                 <Button
                     variant="contained"
                     type="submit"
@@ -91,7 +104,7 @@ const Transactions = ({ setTransactions, transactions, }:
                     Add {type}
                 </Button>
             </Box>
-            <p>{transactions.id} {transactions.date} {transactions.description} {transactions.deposit} {transactions.expense}</p>
+            {/* <p>{transactions.id} {transactions.date} {transactions.description} {transactions.amount} {transactions.deposit} {transactions.expense}</p> */}
 
         </Box>
     )

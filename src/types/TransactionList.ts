@@ -3,6 +3,7 @@ interface TransactionList {
     date: string,
     deposit: number,
     expense: number,
+    amount: number,
     savings: number,
     total: number,
     id: string,

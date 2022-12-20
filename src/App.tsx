@@ -1,24 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { AppBar, Toolbar, Typography } from '@mui/material';
+import Transactions from './components/Transactions';
+import TransactionList from './types/TransactionList';
+
 import './App.css';
 
+
 function App() {
+  const [transactions, setTransactions] = useState<TransactionList>({
+    description: '',
+    date: '',
+    deposit: 0,
+    expense: 0,
+    savings: 0,
+    total: 0,
+    id: ''
+  })
+
+  const handleChange = (transactions: TransactionList): void => 
+    { setTransactions(transactions) }
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AppBar position="static" style={{ marginBottom: 15 }}>
+        <Toolbar>
+          <Typography variant="h4" noWrap>Budget App</Typography>
+        </Toolbar>
+      </AppBar>
+
+      <Transactions
+        setTransactions={setTransactions}
+        transactions={transactions}
+      ></Transactions>
     </div>
   );
 }

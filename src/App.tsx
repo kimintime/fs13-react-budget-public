@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
 import Transactions from './components/Transactions';
 import TransactionList from './types/TransactionList';
 import Total from './components/Total';
 import Savings from './components/Savings';
 
+import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
 import './App.css';
-
 
 function App() {
   const [transactions, setTransactions] = useState<TransactionList>({
@@ -32,12 +31,12 @@ function App() {
         transactions={transactions}
       ></Transactions>
       <Grid container style={{justifyContent: "center"}}>
-        <Grid md={4} sm={8} xs={12}>
+        <Grid item lg={3} md={4} sm={8} xs={12}>
           <Total
             transactions={transactions}
             setTransactions={setTransactions}></Total>
         </Grid>
-        <Grid md={4} sm={8} xs={12}>
+        <Grid item lg={3} md={4} sm={8} xs={12}>
           <Savings
             transactions={transactions}
             setTransactions={setTransactions}></Savings>

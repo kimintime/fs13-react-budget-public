@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
+import TransactionsProps from '../types/TransactionsProps';
 
 import { Box, Button, FormControl, TextField, LinearProgress } from '@mui/material';
 
-const Savings = ({transactions, setTransactions}:
-    {transactions: any, setTransactions: any}) => {
+const Savings = ({transactions, setTransactions}: TransactionsProps) => {
     const [goal, setGoal] = useState(0)
 
     const handleReset = (event: any) => {

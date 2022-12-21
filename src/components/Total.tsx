@@ -1,8 +1,9 @@
-import { Button, Box, FormControl, InputLabel, TextField } from '@mui/material';
 import React, { useState } from 'react';
+import TransactionsProps from '../types/TransactionsProps';
 
-const Total = ({ transactions, setTransactions }:
-    { transactions: any, setTransactions: any }) => {
+import { Button, Box, FormControl, TextField } from '@mui/material';
+
+const Total = ({ transactions, setTransactions }: TransactionsProps) => {
 
     const [transfer, setTransfer] = useState(0)
 

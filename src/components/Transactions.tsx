@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import { Button, FormControl, InputLabel, MenuItem, Select } from "@mui/material";
+import TransactionsProps from "../types/TransactionsProps";
 
+import { Button, FormControl, InputLabel, MenuItem, Select, Box, TextField } from "@mui/material";
 
-const Transactions = ({ setTransactions, transactions, }:
-    { setTransactions: any, transactions: any }) => {
+const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => {
 
     const [data, setData] = useState(0)
     const [inputText, setInputText] = useState('')

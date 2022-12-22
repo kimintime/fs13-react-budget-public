@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import TransactionsProps from "../types/TransactionsProps";
 
 import { Button, FormControl, InputLabel, MenuItem, Select, Box, TextField } from "@mui/material";
@@ -34,8 +34,10 @@ const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => 
                 expense: transactions.expense + data,
                 id: Math.random().toString(36).slice(2, 7)
             })
-        }
+        }  
+    }
 
+    const handleClose = () => {
         setDate('')
         setInputText('')
         setType('')
@@ -98,6 +100,7 @@ const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => 
                     variant="contained"
                     type="submit"
                     size="large"
+                    onClick={() => handleClose}
                 >
                     Add {type}
                 </Button>

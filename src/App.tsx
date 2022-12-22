@@ -1,9 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import Transactions from './components/Transactions';
 import TransactionList from './types/TransactionList';
 import Total from './components/Total';
 import Savings from './components/Savings';
-import DepositsList from './components/DepositsList';
 
 import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
 import './App.css';
@@ -41,9 +40,6 @@ function App() {
           <Savings
             transactions={transactions}
             setTransactions={setTransactions}></Savings>
-        </Grid>
-        <Grid item lg={3} md={4} sm={8} xs={12}>
-          <DepositsList list={[]}></DepositsList>
         </Grid>
       </Grid>
     </div>

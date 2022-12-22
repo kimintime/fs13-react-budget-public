@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import TransactionsProps from '../types/TransactionsProps';
 
 import { Button, Box, FormControl, TextField } from '@mui/material';

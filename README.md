@@ -1,32 +1,20 @@
 # Getting Started with React Components & React Hooks
 
-This assignment requires also TypeScript when passing props to React Components
+This is a very simple Budget App, that tracks deposits and expenses, allows transfer to savings, and setting target savings goals, showing the percentage of that goal saved.
 
-## Requirements
+## How to Use
 
-1. Create a simple one-page application to store incomes and expenses, and set
-saving target.
-2. Account balance can be calculated from incomes, expenses, and saving.
-`incomes - expenses - saving = balance`
-3. Users should be able to add new incomes, expenses, transfer from balance account to saving account, and reset saving target. Balance should never be negative number.
-4. Use React Hooks where applicable. TypeScript must be used at least for the props types.
-5. Decide your own styling (The image has no style)
+1. Enter a transactions amount. Descrption and Date are optional, but you must choose Expense or Deposite type from the drop-down menu.
 
-## Bonus point
+2. The balance gets started, showing how much you have. Expenses will withdraw from that balance. The balance is allowed to go into negative, but you can't transfer to savings if there's nothing to transfer.
 
-1. Add function to transfer money back from saving account to current balance.
-2. Set source of incomes and expenses as the select elements with the categories of your choice.
-3. Add edit/delete button and according functions for incomes and expenses.
-4. Use `d3` package to print out 2 piecharts for incomes and expenses in categories.
+3. Hit Reset on the Savings to reset the goal to zero, and to transfer the Savings amount back to the balance.
 
-## References
 
-Be creative with your style!
+## About
 
-![demo1](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.26.52.png)
----
+1. The savings and balance are kept separate, as in a real-world checkings and savings scenario, where seeing a total balance of what's in all accounts when withdrawing for expenses would not be helpful.
 
-![demo2](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.28.16.png)
----
+2. However, it is possible to put the savings back to the current balance by resetting the savings and target goal. The target can be modified this way at anytime.
 
-![demo3](https://github.com/Integrify-Finland/bof-budget-control-app/blob/main/Screenshot%202022-10-10%20at%2017.44.06.png)
+3. Description and Date fields are there for future implementation of listing transactions, and the edit and delete options that would come with that.

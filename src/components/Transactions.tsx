@@ -102,8 +102,6 @@ const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => 
                     Add {type}
                 </Button>
             </Box>
-            {/* <p>{transactions.id} {transactions.date} {transactions.description} {transactions.amount} {transactions.deposit} {transactions.expense}</p> */}
-
         </Box>
     )
 

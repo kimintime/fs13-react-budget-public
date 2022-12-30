@@ -7,7 +7,7 @@ const Total = ({ transactions, setTransactions }: TransactionsProps) => {
 
     const [transfer, setTransfer] = useState(0)
 
-    const handleSavings = (event: any) => {
+    const handleBalance = (event: any) => {
         event.preventDefault()
 
         if (transactions.deposit - transactions.expense - transfer < 0) {
@@ -21,9 +21,18 @@ const Total = ({ transactions, setTransactions }: TransactionsProps) => {
                 deposit: transactions.deposit - transfer
             })
         }
-
+        
         setTransfer(0)
     };
+
+    const handleSavings = (event: any) => {
+        if (isNaN(event.target.value)) {
+            alert("Please enter a valid number")
+        }
+        
+        setTransfer(parseInt(event.target.value))
+    }
+
 
     return (
         <Box
@@ -39,10 +48,10 @@ const Total = ({ transactions, setTransactions }: TransactionsProps) => {
                 padding: "1em"
             }}
             component="form"
-            onSubmit={handleSavings}
+            onSubmit={handleBalance}
         >
             <h4>Current Balance: {" "}
-                {transactions.deposit - transactions.expense - transfer || 0}
+                {transactions.deposit - transactions.expense - transfer}
             </h4>
             <FormControl sx={{ m: 1, minWidth: 80, }}
             >
@@ -50,10 +59,10 @@ const Total = ({ transactions, setTransactions }: TransactionsProps) => {
                     id="transfer"
                     label="Transfer to savings:"
                     type="text"
-                    value={transfer || 0}
+                    value={transfer || ' '}
                     variant="standard"
                     onChange=
-                        {(event) => setTransfer(parseInt(event.target.value))}
+                        {handleSavings}
                 />
                 <Box style={{
                     display: "flex",

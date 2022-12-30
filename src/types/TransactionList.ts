@@ -1,4 +1,5 @@
 interface TransactionList {
+    map: any;
     description: string,
     date: string,
     deposit: number,

@@ -18,7 +18,8 @@ const Savings = ({transactions, setTransactions}: TransactionsProps) => {
         setGoal(0) 
     }
 
-    console.log(goal)
+    //console.log(transactions.savings)
+    //console.log(goal)
 
     return(
         <Box
@@ -53,8 +54,9 @@ const Savings = ({transactions, setTransactions}: TransactionsProps) => {
                     id="goal"
                     label="Set goal:"
                     type="text"
-                    value={goal || 0}
+                    value={goal || ''}
                     variant="standard"
+                    InputLabelProps={{shrink: true}}
                     onChange=
                         {(event) => setGoal(parseInt(event.target.value))}
                 />

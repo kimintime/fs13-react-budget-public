@@ -1,14 +1,17 @@
 import { useState } from 'react';
+
 import Transactions from './components/Transactions';
 import TransactionList from './types/TransactionList';
 import Total from './components/Total';
 import Savings from './components/Savings';
+import Transactionlist from './components/Transactionlist';
 
 import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
 import './App.css';
 
 function App() {
   const [transactions, setTransactions] = useState<TransactionList>({
+    map: '',
     description: '',
     date: '',
     deposit: 0,
@@ -40,6 +43,11 @@ function App() {
           <Savings
             transactions={transactions}
             setTransactions={setTransactions}></Savings>
+        </Grid>
+      </Grid>
+      <Grid container style={{justifyContent: "center"}}>
+        <Grid item md={8}>
+          <Transactionlist list={[]} />
         </Grid>
       </Grid>
     </div>

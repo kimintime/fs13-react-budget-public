@@ -103,7 +103,7 @@ const Transactions = ({ setTransactions, transactions, balance, setBalance }: Pr
                 id={type}
                 label="Amount"
                 type="text"
-                value={data || 0}
+                value={data || ""}
                 variant="standard"
                 onChange={(event) => setData(parseInt(event.target.value))}
             />

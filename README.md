@@ -2,7 +2,7 @@
 
 Site can be found at - https://kitbudgetapp.netlify.app
 
-This is a very simple Budget App, that tracks deposits and expenses, allows transfer to savings, and setting target savings goals, showing the percentage of that goal saved. It can also show and hide an ongoing list of transactions.
+This is a very simple Budget App, that tracks deposits and expenses, allows transfer to savings, and setting target savings goals, showing the percentage of that goal saved. It can also show and hide an ongoing list of transactions. Expenses are displayed in red.
 
 ## How to Use
 
@@ -12,10 +12,14 @@ This is a very simple Budget App, that tracks deposits and expenses, allows tran
 
 3. Hit Reset on the Savings to reset the goal to zero, and to transfer the Savings amount back to the balance.
 
+4. The user can show or hide the list of transaction at anytime, by clicking the "List" button.
+
 ## About
 
 1. The savings and balance are kept separate, as in a real-world checkings and savings scenario, where seeing a total balance of what's in all accounts when withdrawing for expenses would not be helpful.
 
 2. However, it is possible to put the savings back to the current balance by resetting the savings and target goal. The target can be modified this way at anytime.
 
-3. As time allows, the ability to edit and delete transactions from the list is an upcoming feature.
+3. As time allows, the ability to edit and delete transactions from the list is an upcoming feature. 
+
+4. I used type: number, in the interface defining the transaction amount. This limited me to using integer values only, so in a future update, I'd like to address that, and allow decimal values.

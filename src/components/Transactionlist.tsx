@@ -8,7 +8,9 @@ import {
     TableContainer,
     TableRow,
     Paper,
-    TableCell
+    TableCell,
+    tableCellClasses,
+    styled
 } from "@mui/material"
 
 import ListProps from "../types/ListProps"
@@ -16,7 +18,25 @@ import ListProps from "../types/ListProps"
 const Transactionlist = ({ list }: ListProps) => {
     const [show, setShow] = useState(false)
 
-    console.log(list)
+    const StyledTableCell: any = styled(TableCell)(({ theme }) => ({
+        [`&.${tableCellClasses.head}`]: {
+            backgroundColor: theme.palette.common.black,
+            color: theme.palette.common.white,
+        },
+        [`&.${tableCellClasses.body}`]: {
+            fontSize: 14,
+        },
+    }));
+
+    const StyledTableRow = styled(TableRow)(({ theme }) => ({
+        '&:nth-of-type(odd)': {
+            backgroundColor: theme.palette.action.hover,
+        },
+        // hide last border
+        '&:last-child td, &:last-child th': {
+            border: 0,
+        },
+    }));
 
     return (
         <Box style={{
@@ -34,26 +54,30 @@ const Transactionlist = ({ list }: ListProps) => {
             >
                 List
             </Button>
-            { show ?
+            {show ?
 
-                <TableContainer component={Paper}>
+                <TableContainer component={Paper} style={{ marginBottom: "15px" }}>
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell>Date</TableCell>
-                                <TableCell>Description</TableCell>
-                                <TableCell>Amount</TableCell>
+                                <TableCell style={{fontWeight: "bold"}}>Date</TableCell>
+                                <TableCell style={{fontWeight: "bold"}}>Description</TableCell>
+                                <TableCell style={{fontWeight: "bold"}}>Amount</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {
                                 list.map(item => {
                                     return (
-                                        <TableRow key={item.id}>
-                                            <TableCell>{item.date}</TableCell>
-                                            <TableCell>{item.description}</TableCell>
-                                            <TableCell>{item.amount}</TableCell>
-                                        </TableRow>
+                                        <StyledTableRow key={item.id}>
+                                            <StyledTableCell>{item.date}</StyledTableCell>
+                                            <StyledTableCell>{item.description}</StyledTableCell>
+                                            <StyledTableCell
+                                                style={{color: item.amount < 0 ? 'red' : ''}}
+                                            >
+                                                {item.amount}
+                                            </StyledTableCell>
+                                        </StyledTableRow>
                                     )
                                 })
                             }

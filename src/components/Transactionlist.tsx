@@ -60,9 +60,9 @@ const Transactionlist = ({ list }: ListProps) => {
                     <Table>
                         <TableHead>
                             <TableRow>
-                                <TableCell style={{fontWeight: "bold"}}>Date</TableCell>
-                                <TableCell style={{fontWeight: "bold"}}>Description</TableCell>
-                                <TableCell style={{fontWeight: "bold"}}>Amount</TableCell>
+                                <TableCell align="left" style={{fontWeight: "bold"}}>Date</TableCell>
+                                <TableCell align="center" style={{fontWeight: "bold"}}>Description</TableCell>
+                                <TableCell align="right" style={{fontWeight: "bold"}}>Amount</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
@@ -70,9 +70,10 @@ const Transactionlist = ({ list }: ListProps) => {
                                 list.map(item => {
                                     return (
                                         <StyledTableRow key={item.id}>
-                                            <StyledTableCell>{item.date}</StyledTableCell>
-                                            <StyledTableCell>{item.description}</StyledTableCell>
+                                            <StyledTableCell align="left" >{item.date}</StyledTableCell>
+                                            <StyledTableCell align="center">{item.description}</StyledTableCell>
                                             <StyledTableCell
+                                                align="right"
                                                 style={{color: item.amount < 0 ? 'red' : ''}}
                                             >
                                                 {item.amount}

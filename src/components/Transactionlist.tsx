@@ -1,5 +1,15 @@
 import { useState } from "react"
-import { Box, Button } from "@mui/material"
+import {
+    Box,
+    Button,
+    Table,
+    TableBody,
+    TableHead,
+    TableContainer,
+    TableRow,
+    Paper,
+    TableCell
+} from "@mui/material"
 
 import ListProps from "../types/ListProps"
 
@@ -24,14 +34,33 @@ const Transactionlist = ({ list }: ListProps) => {
             >
                 List
             </Button>
+            { show ?
 
-            {
-                show ?
-                list.map(item  => {
-                    return (
-                        <p key={item.id}>{item.date} - {item.description} - {item.amount}</p>
-                    )
-                })
+                <TableContainer component={Paper}>
+                    <Table>
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Date</TableCell>
+                                <TableCell>Description</TableCell>
+                                <TableCell>Amount</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {
+                                list.map(item => {
+                                    return (
+                                        <TableRow key={item.id}>
+                                            <TableCell>{item.date}</TableCell>
+                                            <TableCell>{item.description}</TableCell>
+                                            <TableCell>{item.amount}</TableCell>
+                                        </TableRow>
+                                    )
+                                })
+                            }
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+
                 : null
             }
         </Box>

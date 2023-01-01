@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, FormControl, InputLabel, MenuItem, Select, Box, TextField } from "@mui/material";
 
 import TransactionsProps from "../types/TransactionsProps";
@@ -11,7 +11,16 @@ const Transactions = ({ setTransactions, transactions, balance, setBalance }: Pr
     const [data, setData] = useState(0)
     const [inputText, setInputText] = useState('')
     const [date, setDate] = useState('')
+    const [currentDate, setCurrentDate] = useState('')
     const [type, setType] = useState('')
+
+    const handleDate = () => {
+        setDate(new Date(currentDate).toDateString())
+    }
+
+    useEffect(() => {
+        handleDate()
+    })
 
     const handleSubmit = (event: any) => {
         event.preventDefault()
@@ -77,10 +86,10 @@ const Transactions = ({ setTransactions, transactions, balance, setBalance }: Pr
                 id="date"
                 label="Date"
                 type="date"
-                value={date}
+                value={currentDate}
                 variant="standard"
                 InputLabelProps={{ shrink: true }}
-                onChange={(event) => setDate(event.target.value)}
+                onChange={(event) => setCurrentDate(event.target.value)}
             />
             <TextField
                 id="description"

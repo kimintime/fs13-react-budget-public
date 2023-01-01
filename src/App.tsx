@@ -1,25 +1,23 @@
 import { useState } from 'react';
+import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
+
+import TransactionsItem from './types/TransactionsItem';
+import Balance from './types/Balance';
 
 import Transactions from './components/Transactions';
-import TransactionList from './types/TransactionList';
 import Total from './components/Total';
 import Savings from './components/Savings';
 import Transactionlist from './components/Transactionlist';
 
-import { AppBar, Grid, Toolbar, Typography } from '@mui/material';
 import './App.css';
 
 function App() {
-  const [transactions, setTransactions] = useState<TransactionList>({
-    map: '',
-    description: '',
-    date: '',
+  const [transactions, setTransactions] = useState<TransactionsItem[]>([])
+  const [balance, setBalance] = useState<Balance>({
     deposit: 0,
     expense: 0,
-    amount: 0,
     savings: 0,
-    total: 0,
-    id: ''
+    total: 0
   })
 
   return (
@@ -32,22 +30,25 @@ function App() {
       <Transactions
         setTransactions={setTransactions}
         transactions={transactions}
+        setBalance={setBalance}
+        balance={balance}
       ></Transactions>
-      <Grid container style={{justifyContent: "center"}}>
+      <Grid container style={{ justifyContent: "center" }}>
         <Grid item lg={3} md={4} sm={8} xs={12}>
           <Total
-            transactions={transactions}
-            setTransactions={setTransactions}></Total>
+            setBalance={setBalance}
+            balance={balance}
+          ></Total>
         </Grid>
         <Grid item lg={3} md={4} sm={8} xs={12}>
           <Savings
-            transactions={transactions}
-            setTransactions={setTransactions}></Savings>
+            setBalance={setBalance}
+            balance={balance}></Savings>
         </Grid>
       </Grid>
-      <Grid container style={{justifyContent: "center"}}>
+      <Grid container style={{ justifyContent: "center" }}>
         <Grid item md={8}>
-          <Transactionlist list={[]} />
+          <Transactionlist list={transactions} />
         </Grid>
       </Grid>
     </div>

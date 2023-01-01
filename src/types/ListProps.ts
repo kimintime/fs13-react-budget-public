@@ -1,7 +1,7 @@
-import TransactionList from "./TransactionList";
+import TransactionsItem from "./TransactionsItem";
 
 interface ListProps {
-    list: TransactionList[]
+    list: TransactionsItem[]
 }
 
 export default ListProps;

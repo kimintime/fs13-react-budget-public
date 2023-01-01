@@ -1,25 +1,22 @@
-import React, { useState } from 'react';
-import TransactionsProps from '../types/TransactionsProps';
-
+import { useState } from 'react';
 import { Box, Button, FormControl, TextField, LinearProgress } from '@mui/material';
 
-const Savings = ({transactions, setTransactions}: TransactionsProps) => {
+import BalanceProps from '../types/BalanceProps';
+
+const Savings = ({ setBalance, balance }: BalanceProps) => {
     const [goal, setGoal] = useState(0)
 
     const handleReset = (event: any) => {
         event.preventDefault()
 
-        setTransactions({
-            ...transactions,
-            deposit: transactions.deposit + transactions.savings,
+        setBalance({
+            ...balance,
+            total: balance.total + balance.savings,
             savings: 0
         }) 
-        
+
         setGoal(0) 
     }
-
-    //console.log(transactions.savings)
-    //console.log(goal)
 
     return(
         <Box
@@ -37,15 +34,15 @@ const Savings = ({transactions, setTransactions}: TransactionsProps) => {
             component="form"
             onSubmit={handleReset}
         >
-            <h4>Current Savings: {transactions.savings}</h4>
+            <h4>Current Savings: {balance.savings}</h4>
             {goal > 0 && (
                 <div>
                 <h3>Current Goal: {goal}</h3>
-                <span>Progress: {(100 / goal) * transactions.savings}%</span>
+                <span>Progress: {(100 / goal) * balance.savings}%</span>
                 <LinearProgress
                     sx={{marginTop: "1em"}} 
                     variant="determinate" 
-                    value={(100 / goal) * transactions.savings} 
+                    value={(100 / goal) * balance.savings} 
                 />
                 </div>
             )}

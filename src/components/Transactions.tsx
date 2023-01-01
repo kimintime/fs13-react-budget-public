@@ -1,43 +1,62 @@
 import { useState } from "react";
-import TransactionsProps from "../types/TransactionsProps";
-
 import { Button, FormControl, InputLabel, MenuItem, Select, Box, TextField } from "@mui/material";
 
-const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => {
+import TransactionsProps from "../types/TransactionsProps";
+import BalanceProps from "../types/BalanceProps";
+
+type Props = TransactionsProps & BalanceProps
+
+const Transactions = ({ setTransactions, transactions, balance, setBalance }: Props) => {
 
     const [data, setData] = useState(0)
     const [inputText, setInputText] = useState('')
     const [date, setDate] = useState('')
     const [type, setType] = useState('')
 
-
     const handleSubmit = (event: any) => {
         event.preventDefault()
 
         if (type === "deposit") {
-            setTransactions({
+            setTransactions([
                 ...transactions,
-                description: inputText,
-                date: date,
-                amount: data,
-                deposit: transactions.deposit + data,
-                id: Math.random().toString(36).slice(2, 7)
+                {
+                    description: inputText,
+                    date: date,
+                    amount: data,
+                    id: Math.random().toString(36).slice(2, 7)
+                }
+            ])
+
+            setBalance({
+                ...balance,
+                deposit: balance.deposit + data,
+                total: balance.total + data
             })
         }
 
         if (type === "expense") {
-            setTransactions({
-                ...transactions,
-                description: inputText,
-                date: date,
-                amount: data,
-                expense: transactions.expense + data,
-                id: Math.random().toString(36).slice(2, 7)
-            })
-        }  
-    }
 
-    const handleClose = () => {
+            if (balance.total - data < 0) {
+                alert("Withdrawal must not exceed current balance.")
+
+            } else {
+                setTransactions([
+                    ...transactions,
+                    {
+                        description: inputText,
+                        date: date,
+                        amount: -data,
+                        id: Math.random().toString(36).slice(2, 7)
+                    }
+                ])
+
+                setBalance({
+                    ...balance,
+                    expense: balance.expense + data,
+                    total: balance.total - data
+                })
+            }
+        }
         setDate('')
         setInputText('')
         setType('')
@@ -90,17 +109,16 @@ const Transactions = ({ setTransactions, transactions, }: TransactionsProps) => 
                     <MenuItem value="expense">Expense</MenuItem>
                 </Select>
             </FormControl>
-            <Box style={{ 
-                display: "flex", 
-                flexDirection: "column", 
+            <Box style={{
+                display: "flex",
+                flexDirection: "column",
                 alignItems: "center"
-                }}
+            }}
             >
                 <Button
                     variant="contained"
                     type="submit"
                     size="large"
-                    onClick={() => handleClose}
                 >
                     Add {type}
                 </Button>

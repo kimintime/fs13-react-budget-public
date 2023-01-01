@@ -1,9 +1,9 @@
 import React from "react";
-import TransactionList from "./TransactionList";
+import TransactionsItem from "./TransactionsItem";
 
 interface TransactionsProps {
-    transactions: TransactionList,
-    setTransactions: React.Dispatch<React.SetStateAction<TransactionList>>
+    transactions: TransactionsItem[],
+    setTransactions: React.Dispatch<React.SetStateAction<TransactionsItem[]>>
 }
 
 export default TransactionsProps;

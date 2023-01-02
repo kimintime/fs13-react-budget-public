@@ -56,12 +56,12 @@ const Transactionlist = ({ list }: ListProps) => {
             </Button>
             {show ?
 
-                <TableContainer component={Paper} style={{ marginBottom: "15px" }}>
+                <TableContainer component={Paper} style={{ marginBottom: "15px", marginTop: "15px" }}>
                     <Table>
                         <TableHead>
                             <TableRow>
                                 <TableCell align="left" style={{fontWeight: "bold"}}>Date</TableCell>
-                                <TableCell align="center" style={{fontWeight: "bold"}}>Description</TableCell>
+                                <TableCell align="left" style={{fontWeight: "bold"}}>Description</TableCell>
                                 <TableCell align="right" style={{fontWeight: "bold"}}>Amount</TableCell>
                             </TableRow>
                         </TableHead>
@@ -71,7 +71,7 @@ const Transactionlist = ({ list }: ListProps) => {
                                     return (
                                         <StyledTableRow key={item.id}>
                                             <StyledTableCell align="left" >{item.date}</StyledTableCell>
-                                            <StyledTableCell align="center">{item.description}</StyledTableCell>
+                                            <StyledTableCell align="left">{item.description}</StyledTableCell>
                                             <StyledTableCell
                                                 align="right"
                                                 style={{color: item.amount < 0 ? 'red' : ''}}
